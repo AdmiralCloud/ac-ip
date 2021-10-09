@@ -1,3 +1,12 @@
+<a name="1.3.6"></a>
+
+## [1.3.6](https://github.com/mmpro/ac-ip/compare/v1.3.5..v1.3.6) (2021-10-09 10:12:28)
+
+
+### Bug Fix
+
+* **App:** Package updates | MP | [24f70a12ed3e4465ad88c2cd4e4a86ab6fd1a485](https://github.com/mmpro/ac-ip/commit/24f70a12ed3e4465ad88c2cd4e4a86ab6fd1a485)    
+Package updates
 <a name="1.3.5"></a>
 
 ## [1.3.5](https://github.com/mmpro/ac-ip/compare/v1.3.4..v1.3.5) (2021-05-08 07:22:35)
