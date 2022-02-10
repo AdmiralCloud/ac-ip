@@ -23,10 +23,12 @@ const acip = () => {
     if (!ip) return { code: 9000, message: 'acip_determineIP_noIPDetected' }
     // x forwarded for can be a comma or space separated list - z.b. 192.168.24.73, 198.135.124.15
     // X-Forwarded-For: client1, proxy1, proxy2 -> but client1 can be a private IP address
+    // AWS (ALB) adds the real client ip to the right of forwarded-for list, therefore take the first non-private IP from the right 
     if (ip.indexOf(',') > -1) {
       // check until we've found a non-private IP address
       let finalIP
-      _.some(ip.split(','), (ipToCheck) => {
+      let ipList = _.get(process, 'env.CLOUDPROVIDER') === 'aws' ? _.reverse(ip.split(',')) : ip.split(',')
+      _.some(ipList, (ipToCheck) => {
         if (!ipPackage.isPrivate(_.trim(ipToCheck))) {
           finalIP = _.trim(ipToCheck)
           return true

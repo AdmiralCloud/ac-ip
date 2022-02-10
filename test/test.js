@@ -222,3 +222,32 @@ describe('Is IP private', () => {
   })
 
 })
+
+describe('Forwarded-For on AWS infrastructure', () => {
+  it('Set Environemt', done => {
+    _.set(process, 'env.CLOUDPROVIDER', 'aws')
+    return done()
+  })
+
+  it('Test IP', done => {
+    let req = { 
+      headers: {
+        'x-forwarded-for': '1.1.1.1, 4.4.4.4, 1.2.3.4'
+      }
+    }
+    let test = acip.determineIP(req)
+    expect(test).toEqual('1.2.3.4')
+    return done()  
+  })
+
+  it('Test IP behind ALB', done => {
+    let req = { 
+      headers: {
+        'x-forwarded-for': '1.1.1.1, 4.4.4.4, 1.2.3.4, 172.30.1.104'
+      }
+    }
+    let test = acip.determineIP(req)
+    expect(test).toEqual('1.2.3.4')
+    return done()  
+  })
+})

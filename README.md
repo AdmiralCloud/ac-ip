@@ -17,6 +17,9 @@ const ip = acts.determineIP(req)
 ```
 Use X-AdmiralCloud-Test "true" to overwrite the real IP with params.ip from request object.
 
+#### AWS Environment
+If you are in an AWS environment, the client ip is added to the right of list. In this case set environment variable CLOUDPROVIDER to "aws".
+
 
 ### IP to privacy
 Makes the IP GDRP ready by removing the last two octecs of the IP(s)
