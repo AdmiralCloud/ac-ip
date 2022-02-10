@@ -1,3 +1,16 @@
+<a name="1.3.7"></a>
+
+## [1.3.7](https://github.com/mmpro/ac-ip/compare/v1.3.6..v1.3.7) (2022-02-10 20:06:59)
+
+
+### Bug Fix
+
+* **App:** Add option to detect IP in AWS environment. See README for details. | MP | [9f1f1e54984f383ea953a9782ab50df4604b0372](https://github.com/mmpro/ac-ip/commit/9f1f1e54984f383ea953a9782ab50df4604b0372)    
+Add option to detect IP in AWS environment. See README for details.
+### Chores
+
+* **App:** Updated packages | MP | [2f3f45f0470ab3d7c17d0e781ad4efc93d3acbbc](https://github.com/mmpro/ac-ip/commit/2f3f45f0470ab3d7c17d0e781ad4efc93d3acbbc)    
+Updated packages
 <a name="1.3.6"></a>
 
 ## [1.3.6](https://github.com/mmpro/ac-ip/compare/v1.3.5..v1.3.6) (2021-10-09 10:12:28)
