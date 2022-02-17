@@ -12,7 +12,7 @@ describe('Determine IP from request object', () => {
     return done()  
   })
 
-  it('Test Proxy IP - with x-real-ip', done => {
+  it('Test Proxy IP - with x-real-ip - should fail', done => {
     let req = { 
       ip: '8.8.8.8',
       headers: {
@@ -20,7 +20,7 @@ describe('Determine IP from request object', () => {
       }
     }
     let test = acip.determineIP(req)
-    expect(test).toEqual('4.4.4.4')
+    expect(test).toEqual('8.8.8.8')
     return done()  
   })
 
@@ -36,7 +36,7 @@ describe('Determine IP from request object', () => {
     return done()  
   })
 
-  it('Test Proxy IP - with both headers - prefer x-real-ip', done => {
+  it('Test Proxy IP - with both headers - ignore x-real-ip', done => {
     let req = { 
       ip: '8.8.8.8',
       headers: {
@@ -45,7 +45,7 @@ describe('Determine IP from request object', () => {
       }
     }
     let test = acip.determineIP(req)
-    expect(test).toEqual('4.4.4.4')
+    expect(test).toEqual('1.1.1.1')
     return done()  
   })
 
@@ -223,9 +223,9 @@ describe('Is IP private', () => {
 
 })
 
-describe('Forwarded-For on AWS infrastructure', () => {
+describe('Use reverse approach for X-Forwarded-For', () => {
   it('Set Environemt', done => {
-    _.set(process, 'env.CLOUDPROVIDER', 'aws')
+    _.set(process, 'env.X-Forwarded-For', 'reverse')
     return done()
   })
 
@@ -244,6 +244,18 @@ describe('Forwarded-For on AWS infrastructure', () => {
     let req = { 
       headers: {
         'x-forwarded-for': '1.1.1.1, 4.4.4.4, 1.2.3.4, 172.30.1.104'
+      }
+    }
+    let test = acip.determineIP(req)
+    expect(test).toEqual('1.2.3.4')
+    return done()  
+  })
+
+  it('Test IP with real-ip set', done => {
+    let req = { 
+      headers: {
+        'x-real-ip': '1.1.1.1',
+        'x-forwarded-for': '1.1.1.1, 1.2.3.4, 172.30.1.104'
       }
     }
     let test = acip.determineIP(req)

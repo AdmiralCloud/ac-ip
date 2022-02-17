@@ -10,8 +10,7 @@ const acip = () => {
    * @param req object Express-like request object
    */
   const determineIP = (req) => {
-    const proxyIP = _.get(req, 'headers.x-real-ip') || _.get(req, 'headers.x-forwarded-for')
-    let ip = proxyIP || _.get(req, 'ip')
+    let ip =  _.get(req, 'headers.x-forwarded-for') || _.get(req, 'ip')
     // allow "overwriting" IP for local testing, but not in production, send X-AdmiralCloud-Header "true"
     if (_.has(req, 'query.ip') && _.indexOf(['development', 'test'], _.get(process, 'env.NODE_ENV', 'development')) > -1) {
       ip = _.get(req, 'query.ip')
@@ -27,7 +26,7 @@ const acip = () => {
     if (ip.indexOf(',') > -1) {
       // check until we've found a non-private IP address
       let finalIP
-      let ipList = _.get(process, 'env.CLOUDPROVIDER') === 'aws' ? _.reverse(ip.split(',')) : ip.split(',')
+      let ipList = _.get(process, 'env.X-Forwarded-For') === 'reverse' ? _.reverse(ip.split(',')) : ip.split(',')
       _.some(ipList, (ipToCheck) => {
         if (!ipPackage.isPrivate(_.trim(ipToCheck))) {
           finalIP = _.trim(ipToCheck)
