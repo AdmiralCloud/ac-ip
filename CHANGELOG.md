@@ -1,3 +1,18 @@
+<a name="2.0.0"></a>
+ 
+# [2.0.0](https://github.com/mmpro/ac-ip/compare/v1.3.7..v2.0.0) (2022-02-17 11:16:58)
+
+
+### Bug Fix
+
+* **App:** Do not use X-Real-IP header any longer | MP | [1c8fe63777771bb918fe0f68234cc25db978689d](https://github.com/mmpro/ac-ip/commit/1c8fe63777771bb918fe0f68234cc25db978689d)    
+X-Real-IP header can easily be spoofed and should not be used.
+### Chores
+
+* **App:** Updated packages | MP | [15d62105b189647c1376f2ad3fa96c99af7bfd28](https://github.com/mmpro/ac-ip/commit/15d62105b189647c1376f2ad3fa96c99af7bfd28)    
+Updated packages
+## BREAKING CHANGES
+* **App:** X-Real-IP header is now ignored
 <a name="1.3.7"></a>
 
 ## [1.3.7](https://github.com/mmpro/ac-ip/compare/v1.3.6..v1.3.7) (2022-02-10 20:06:59)
