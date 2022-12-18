@@ -3,6 +3,8 @@ This is a little helper for IP and network operations.
 
 This is currently just a preliminary version with limited documentation.
 
+![example workflow](https://github.com/admiralcloud/ac-ip/actions/workflows/node.js.yml/badge.svg)
+
 ## Usage
 
 ```
