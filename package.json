@@ -2,17 +2,20 @@
   "name": "ac-ip",
   "version": "2.0.0",
   "author": "Mark Poepping (https://www.admiralcloud.de)",
+  "engines": {
+    "node": ">=0.16"
+  },
   "dependencies": {
-    "ip": "^1.1.5",
+    "ip": "^1.1.8",
     "lodash": "4.x"
   },
   "repository": "https://github.com/admiralcloud/ac-ip",
   "license": "MIT",
   "devDependencies": {
-    "ac-semantic-release": "^0.2.7",
-    "eslint": "^8.9.0",
-    "expect": "^27.5.1",
-    "mocha": "^9.2.0",
+    "ac-semantic-release": "^0.3.4",
+    "eslint": "^8.30.0",
+    "expect": "^29.3.1",
+    "mocha": "^10.2.0",
     "nyc": "^15.1.0"
   },
   "scripts": {
