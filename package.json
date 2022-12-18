@@ -13,6 +13,7 @@
   "license": "MIT",
   "devDependencies": {
     "ac-semantic-release": "^0.3.4",
+    "chai": "^4.3.7",
     "eslint": "^8.30.0",
     "expect": "^29.3.1",
     "mocha": "^10.2.0",
