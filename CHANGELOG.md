@@ -1,3 +1,20 @@
+<a name="3.0.0"></a>
+ 
+# [3.0.0](https://github.com/mmpro/ac-ip/compare/v2.0.0..v3.0.0) (2022-12-18 09:58:28)
+
+
+### Tests
+
+* **App:** Use chai/expect for test | MP | [10b1c1e3250cd01e3348a4ab5c4fa5273e6c48c3](https://github.com/mmpro/ac-ip/commit/10b1c1e3250cd01e3348a4ab5c4fa5273e6c48c3)    
+Use chai/expect for test  
+Related issues: [undefined/undefined#master](undefined/browse/master)
+### Chores
+
+* **App:** Updated packages | MP | [71c6efe0d2183718915863aa0eb8d2b40155a3b7](https://github.com/mmpro/ac-ip/commit/71c6efe0d2183718915863aa0eb8d2b40155a3b7)    
+Updated packages  
+Related issues: [/issues#undefined](https://github.com//issues/undefined)
+## BREAKING CHANGES
+* **App:** Node 16+ required
 <a name="2.0.0"></a>
  
 # [2.0.0](https://github.com/mmpro/ac-ip/compare/v1.3.7..v2.0.0) (2022-02-17 11:16:58)
