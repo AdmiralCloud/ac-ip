@@ -1,3 +1,9 @@
+<a name="3.0.1"></a>
+ 
+# [3.0.1](https://github.com/mmpro/ac-ip/compare/v3.0.0..v3.0.1) (2023-01-02 20:23:00)
+
+Manual release after package updates.
+
 <a name="3.0.0"></a>
  
 # [3.0.0](https://github.com/mmpro/ac-ip/compare/v2.0.0..v3.0.0) (2022-12-18 09:58:28)
