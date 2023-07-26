@@ -1,6 +1,6 @@
 {
   "name": "ac-ip",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "author": "Mark Poepping (https://www.admiralcloud.de)",
   "engines": {
     "node": ">=0.16"

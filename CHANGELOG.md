@@ -1,3 +1,13 @@
+<a name="3.0.2"></a>
+
+## [3.0.2](https://github.com/mmpro/ac-ip/compare/v3.0.1..v3.0.2) (2023-07-26 06:19:08)
+
+
+### Bug Fix
+
+* **App:** Package updates | MP | [9052aba0fc2729b488e64a740362e3ddfe105c17](https://github.com/mmpro/ac-ip/commit/9052aba0fc2729b488e64a740362e3ddfe105c17)    
+Including replacement of nyc with c8.  
+Related issues: [/issues#undefined](https://github.com//issues/undefined)
 <a name="3.0.1"></a>
  
 # [3.0.1](https://github.com/mmpro/ac-ip/compare/v3.0.0..v3.0.1) (2023-01-02 20:23:00)
