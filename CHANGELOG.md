@@ -1,3 +1,13 @@
+<a name="3.1.0"></a>
+ 
+# [3.1.0](https://github.com/mmpro/ac-ip/compare/v3.0.2..v3.1.0) (2023-07-26 12:09:22)
+
+
+### Feature
+
+* **App:** Add new function to anonymizeIP | MP | [b73bcaa6c7d08abbb4902e87ef5a1ec6527a23a2](https://github.com/mmpro/ac-ip/commit/b73bcaa6c7d08abbb4902e87ef5a1ec6527a23a2)    
+You can now anonymize single IPv4 or IPv6 addresses  
+Related issues: [/issues#undefined](https://github.com//issues/undefined)
 <a name="3.0.2"></a>
 
 ## [3.0.2](https://github.com/mmpro/ac-ip/compare/v3.0.1..v3.0.2) (2023-07-26 06:19:08)
