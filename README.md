@@ -32,6 +32,17 @@ const privacyIP = acts.ipsToPrivacy(['1.2.3.4', ...])
 // -> ['1.2.x.x', ...]
 ```
 
+### anonymizeIP
+Anonymize single IP addresses (IPv4 or IPv6 addresses). If you send an invalid IP address the function returns undefined.
+
+```
+const anonymizedIP = acts.anonymizeIP('1.2.3.4') -> 1.2.x.x
+const anonymizedIP = acts.anonymizeIP('2001:4860:4860::8888') -> 2001:4860:4860:x:x
+
+// optional replacement
+const anonymizedIP = acts.anonymizeIP('1.2.3.4', { replacement: 0 }) -> 1.2.0.0
+```
+
 ### Check if IP is private
 ```
 const isPrivate = acts.isPrivate('1.2.3.4')

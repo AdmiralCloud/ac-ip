@@ -265,3 +265,29 @@ describe('Use reverse approach for X-Forwarded-For', () => {
     return done()  
   })
 })
+
+describe('Anonymize IP', () => {
+  it('Anonymize IPv4', done => {
+    let test = acip.anonymizeIP('1.2.1.1')
+    expect(test).equal('1.2.x.x')
+    done()
+  })
+
+  it('Anonymize IPv4 with 0 as replacment', done => {
+    let test = acip.anonymizeIP('1.2.1.1', { replacement: 0 })
+    expect(test).equal('1.2.0.0')
+    done()
+  })
+
+  it('Anonymize IPv6', done => {
+    let test = acip.anonymizeIP('2001:4860:4860::8888')
+    expect(test).equal('2001:4860:4860:x:x')
+    done()
+  })
+
+  it('Anonymize non-IP', done => {
+    let test = acip.anonymizeIP('I am no IP')
+    expect(test).to.be.undefined
+    done()
+  })
+})

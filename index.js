@@ -72,7 +72,7 @@ const acip = () => {
    *
    * [{
     "cidr": "2001:280::/32",
-    "type"; "ipv6"
+    "type" "ipv6"
    },...]
    *
    */
@@ -152,6 +152,27 @@ const acip = () => {
     return _.uniq(ips)
   }
 
+  const anonymizeIP = (ip, { replacement = 'x' } = {}) => {
+    let anonymizedIP
+    let splitChar 
+    if (ipPackage.isV4Format(ip)) {
+      splitChar = '.'
+    } 
+    else if (ipPackage.isV6Format(ip)) {
+      splitChar = ':'
+    } 
+    else {
+      return anonymizedIP
+    }
+
+    let ipSegments = ip.split(splitChar)
+    ipSegments[ipSegments.length - 2] = replacement
+    ipSegments[ipSegments.length - 1] = replacement
+    anonymizedIP = ipSegments.join(splitChar)
+
+    return anonymizedIP
+  }
+
   /**
    * Checks is an IP is in an IP list
    * @param params.ip STRING ip IP address to check
@@ -173,7 +194,8 @@ const acip = () => {
     ipsFromCIDR,
     ipsToPrivacy,
     ipInIPList,
-    isPrivate
+    isPrivate,
+    anonymizeIP
   }
 }
 
