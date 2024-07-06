@@ -43,7 +43,7 @@ const acip = function () {
       const ipList = _.get(process, 'env.X-Forwarded-For') === 'reverse' ? _.reverse(ip.split(',')) : ip.split(',')
       _.some(ipList, (ipToCheck) => {
         const validIP = prepIP({ ip: ipToCheck })
-        if (validIP.isCorrect() && !isPrivateIP(ipToCheck)) {
+        if (validIP.isCorrect() && !isSpecialIP(ipToCheck)) {
           finalIP = validIP.address
           return true
         }
