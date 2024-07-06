@@ -1,3 +1,20 @@
+<a name="4.0.0"></a>
+ 
+# [4.0.0](https://github.com/mmpro/ac-ip/compare/v3.1.1..v4.0.0) (2024-07-06 12:06:03)
+
+
+### Feature
+
+* **App:** Refactored version | MP | [13cf19708d8a192d7c7aafd17dc7ea835f558df7](https://github.com/mmpro/ac-ip/commit/13cf19708d8a192d7c7aafd17dc7ea835f558df7)    
+Refactored version - please read README  
+Related issues: [undefined/undefined#master](undefined/browse/master)
+### Chores
+
+* **App:** Updated Github CI settings | MP | [74a2fb547301afeeb6fd3062528a7fc65638d6a0](https://github.com/mmpro/ac-ip/commit/74a2fb547301afeeb6fd3062528a7fc65638d6a0)    
+Updated Github CI settings  
+Related issues: [undefined/undefined#master](undefined/browse/master)
+## BREAKING CHANGES
+* **App:** all functions are synchronous, errors are thrown
 <a name="3.1.1"></a>
 
 ## [3.1.1](https://github.com/mmpro/ac-ip/compare/v3.1.0..v3.1.1) (2024-02-26 07:32:26)
