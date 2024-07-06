@@ -293,3 +293,55 @@ describe('Anonymize IP', () => {
     expect(test).to.be.undefined
   })
 })
+
+describe('Special IP', () => {
+  it('Check private IPv4 address', () =>  {
+    const test = acip.isSpecialIP('192.168.1.1')
+    expect(test).equal(true)
+  })
+
+  it('Check IPv4 loopback address', () =>  {
+    const test = acip.isSpecialIP('127.0.0.1')
+    expect(test).equal(true)
+  })
+
+  it('Check IPv4 link-local address', () =>  {
+    const test = acip.isSpecialIP('169.254.0.1')
+    expect(test).equal(true)
+  })
+
+  it('Check public IPv4 address', () =>  {
+    const test = acip.isSpecialIP('8.8.8.8')
+    expect(test).equal(false)
+  })
+
+  it('Check ULA IPv6 address', () =>  {
+    const test = acip.isSpecialIP('fc00::1')
+    expect(test).equal(true)
+  })
+
+  it('Check loopback IPv6 address', () =>  {
+    const test = acip.isSpecialIP('::1')
+    expect(test).equal(true)
+  })
+
+  it('Check link-local IPv6 address', () =>  {
+    const test = acip.isSpecialIP('fe80::1')
+    expect(test).equal(true)
+  })
+
+  it('Check documentation IPv6 address', () =>  {
+    const test = acip.isSpecialIP('2001:db8::1')
+    expect(test).equal(true)
+  })
+
+  it('Check public IPv6 address', () =>  {
+    const test = acip.isSpecialIP('001:4860:4860::8888')
+    expect(test).equal(false)
+  })
+
+  it('Check invalid IP address', () =>  {
+    expect(() => acip.isSpecialIP('thisIsNoIpAddress'))
+      .to.throw(Error, 'Invalid IPv4 address')
+  })
+})

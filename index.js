@@ -227,6 +227,48 @@ const acip = function () {
     return isPrivateIP(ip)
   }
 
+  /**
+   * Checks private, loopback, link-local and other reserved or special IP addresses
+   */
+  const isSpecialIP = (ip) => {
+    const ipToCheck = prepIP({ ip })
+  
+    if (ipToCheck.v4 === true) {
+      return (
+        // Private IPv4
+        ipToCheck.isInSubnet(new Address4('10.0.0.0/8')) ||
+        ipToCheck.isInSubnet(new Address4('172.16.0.0/12')) ||
+        ipToCheck.isInSubnet(new Address4('192.168.0.0/16')) ||
+        // Loopback IPv4
+        ipToCheck.isInSubnet(new Address4('127.0.0.0/8')) ||
+        // Link-local IPv4
+        ipToCheck.isInSubnet(new Address4('169.254.0.0/16')) ||
+        // Other special IPv4 ranges
+        ipToCheck.isInSubnet(new Address4('0.0.0.0/8')) ||
+        ipToCheck.isInSubnet(new Address4('224.0.0.0/4')) ||
+        ipToCheck.isInSubnet(new Address4('240.0.0.0/4'))
+      )
+    } 
+    else if (ipToCheck.v4 === false) {
+      return (
+        // Unique Local Address (private) IPv6
+        ipToCheck.isInSubnet(new Address6('fc00::/7')) ||
+        // Loopback IPv6
+        ipToCheck.isInSubnet(new Address6('::1/128')) ||
+        // Link-local IPv6
+        ipToCheck.isInSubnet(new Address6('fe80::/10')) ||
+        // Other special IPv6 ranges
+        ipToCheck.isInSubnet(new Address6('::/128')) ||
+        ipToCheck.isInSubnet(new Address6('::ffff:0:0/96')) || // IPv4-mapped
+        ipToCheck.isInSubnet(new Address6('100::/64')) ||
+        ipToCheck.isInSubnet(new Address6('2001::/32')) || // Teredo
+        ipToCheck.isInSubnet(new Address6('2001:20::/28')) || // ORCHIDv2
+        ipToCheck.isInSubnet(new Address6('2001:db8::/32')) || // Documentation
+        ipToCheck.isInSubnet(new Address6('ff00::/8')) // Multicast
+      )
+    }
+  }
+
   return {
     determineIP,
     checkCIDR,
@@ -234,6 +276,7 @@ const acip = function () {
     ipsToPrivacy,
     anonymizeIP,
     isPrivateIP,
+    isSpecialIP,
     // deprecated
     isPrivate
   }
