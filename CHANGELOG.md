@@ -1,3 +1,13 @@
+<a name="4.1.0"></a>
+ 
+# [4.1.0](https://github.com/mmpro/ac-ip/compare/v4.0.0..v4.1.0) (2024-07-06 18:43:59)
+
+
+### Feature
+
+* **App:** Add new function isSpecialIP | MP | [d4a09f6bdc839779f87383a20a7e2c5f663cd721](https://github.com/mmpro/ac-ip/commit/d4a09f6bdc839779f87383a20a7e2c5f663cd721)    
+Function isSpecialIP is an enhanced verrsion of isPrivateIP. isSpecialIP detects also loop-back etc.  
+Related issues: [undefined/undefined#master](undefined/browse/master)
 <a name="4.0.0"></a>
  
 # [4.0.0](https://github.com/mmpro/ac-ip/compare/v3.1.1..v4.0.0) (2024-07-06 12:06:03)
