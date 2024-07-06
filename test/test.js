@@ -5,66 +5,79 @@ const expect = require('chai').expect
 
 
 describe('Determine IP from request object', () => {
-  it('Test IP', done => {
-    let req = { 
+  it('Test IP', () => {
+    const req = { 
       ip: '8.8.8.8'
     }
-    let test = acip.determineIP(req)
+    const test = acip.determineIP(req)
     expect(test).equal('8.8.8.8')
-    return done()  
   })
 
-  it('Test Proxy IP - with x-real-ip - should fail', done => {
-    let req = { 
+  it('Test IP in debugMode', () => {
+    const req = { 
+      debugMode: true,
+      query: {
+        ip: '8.8.8.8'
+      }
+    }
+    const test = acip.determineIP(req)
+    expect(test).equal('8.8.8.8')
+  })
+
+  it('Test IP - with no IP', () => {
+    const req = {}
+    expect(() => acip.determineIP(req))
+    .to.throw(Error, 'acip_determineIP_noIPDetected')
+    .with.property('code', 9000)
+  })
+
+  it('Test Proxy IP - with x-real-ip - should fail', () => {
+    const req = { 
       ip: '8.8.8.8',
       headers: {
         'x-real-ip': '4.4.4.4'
       }
     }
-    let test = acip.determineIP(req)
+    const test = acip.determineIP(req)
     expect(test).equal('8.8.8.8')
-    return done()  
   })
 
-  it('Test Proxy IP - with x-forwarded-for', done => {
-    let req = { 
+  it('Test Proxy IP - with x-forwarded-for', () =>  {
+    const req = { 
       ip: '8.8.8.8',
       headers: {
         'x-forwarded-for': '1.1.1.1'
       }
     }
-    let test = acip.determineIP(req)
+    const test = acip.determineIP(req)
     expect(test).equal('1.1.1.1')
-    return done()  
   })
 
-  it('Test Proxy IP - with both headers - ignore x-real-ip', done => {
-    let req = { 
+  it('Test Proxy IP - with both headers - ignore x-real-ip', () =>  {
+    const req = { 
       ip: '8.8.8.8',
       headers: {
         'x-real-ip': '4.4.4.4',
         'x-forwarded-for': '1.1.1.1'
       }
     }
-    let test = acip.determineIP(req)
+    const test = acip.determineIP(req)
     expect(test).equal('1.1.1.1')
-    return done()  
   })
 
-  it('Test multiple Proxy IP - with x-forwarded-for', done => {
-    let req = { 
+  it('Test multiple Proxy IP - with x-forwarded-for', () =>  {
+    const req = { 
       ip: '8.8.8.8',
       headers: {
         'x-forwarded-for': '1.1.1.1, 4.4.4.4, 1.2.3.4'
       }
     }
-    let test = acip.determineIP(req)
+    const test = acip.determineIP(req)
     expect(test).equal('1.1.1.1')
-    return done()  
   })
 
-  it('Test set ip in test mode', done => {
-    let req = { 
+  it('Test set ip in test mode', () =>  {
+    const req = { 
       query: {
         ip: '5.4.1.2'
       },
@@ -74,9 +87,8 @@ describe('Determine IP from request object', () => {
         'x-forwarded-for': '1.1.1.1'
       }
     }
-    let test = acip.determineIP(req)
+    const test = acip.determineIP(req)
     expect(test).equal('5.4.1.2')
-    return done()  
   })
 
 })
@@ -86,208 +98,198 @@ describe('Testing CIDR', function () {
   const invalidCIDRs = [{ cidr: '8.8.0.0' }]
   const validv6CIDRs = [{ cidr: '2001:4d20::/32', type: 'ipv6' }]
 
-  let test1 = '85.182.224.128'
-  let test2 = [{ 'cidr': '85.182.224.128/26' }, { 'cidr': '62.96.36.146/32' }, { 'cidr': '62.84.220.138/32' }]
+  const test1 = '85.182.224.128'
+  const test2 = [{ 'cidr': '85.182.224.128/26' }, { 'cidr': '62.96.36.146/32' }, { 'cidr': '62.84.220.138/32' }]
 
-  it('Check if CIDR is valid', function(done) {
-    let test = acip.checkCIDR({ cidr: validCIDRs })
-    expect(test).to.be.undefined
-    return done()
+  it('Check if CIDR is valid - wrong entry style', function() {
+    expect(() => acip.checkCIDR({ cidr: [{ contact: true }] }))
+      .to.throw(Error, 'acip_checkCIDR_atLeastOneCIDR_invalid')
+      .with.property('code', 9008)
   })
 
-  it('Check if CIDR IPv6 is valid', function(done) {
-    let test = acip.checkCIDR({ cidr: validv6CIDRs })
-    expect(test).to.be.undefined
-    return done()
+  it('Check if CIDR is valid', function() {
+    const test = acip.checkCIDR({ cidr: validCIDRs })
+    expect(test).to.be.true
   })
 
-  it('Check if CIDR is invalid', function(done) {
-    let test = acip.checkCIDR({ cidr: invalidCIDRs })
-    expect(test).eql({ 'additionalInfo': { 'cidr': '8.8.0.0', 'type': 'ipv4' }, code: 9004, 'message': 'acip_checkCIDR_thisIsNoCIDR' })
-    return done()
+  it('Check if CIDR IPv6 is valid', function() {
+    const test = acip.checkCIDR({ cidr: validv6CIDRs })
+    expect(test).to.be.true
   })
 
-  it('Check if IP is in CIDR ', function(done) {
-    let test = acip.checkCIDR({ ip: test1, cidr: test2 })
-    expect(test).to.be.null
-    return done()
+  it('Check if CIDR is invalid', () => {
+    expect(() => acip.checkCIDR({ cidr: invalidCIDRs }))
+      .to.throw(Error, 'acip_checkCIDR_atLeastOneCIDR_invalid')
+      .with.property('code', 9008)
   })
 
-  it('Check if IP is in CIDR using callback ', function(done) {
-    acip.checkCIDR({ ip: test1, cidr: test2 }, (err, result) => {
-      if (err) return done(err)
-      expect(result).equal(_.get(_.first(test2), 'cidr'))
-      return done()
-    })
+
+  it('Check if IP is in CIDR', () => {
+    const test = acip.checkCIDR({ ip: test1, cidr: test2 })
+    expect(test).to.be.true
   })
 
-  it('Check CIDR without parameter CIDR - fail', function(done) {
-    let test = acip.checkCIDR({ ip: test1 })
-    expect(test.code).equal(9001)
-    expect(test.message).equal("acip_checkCIDR_listIsEmpty")
-    return done()
+  it('Check if IP is in CIDR - if not match do not throw an error', () => {
+    const match = acip.checkCIDR({ cidr: [{ cidr: '192.168.10.200/32' }], ip: '8.8.8.8', noMatchAllowed: true  })
+    expect(match).to.be.null
   })
 
-  it('Check CIDR without invalid mask - fail', function(done) {
-    let test = acip.checkCIDR({ cidr: [{ cidr: '85.182.224.128/333' }] })
-    expect(test.code).equal(9005)
-    expect(test.message).equal("acip_checkCIDR_maskInvalid")
-    return done()
+  it('Check if IP is in CIDR - no match - throw error', () => {
+    expect(() => acip.checkCIDR({ cidr: [{ cidr: '192.168.10.200/32' }], ip: '8.8.8.8' }))
+      .to.throw(Error, 'acip_checkCIDR_ipNotInCIDRrange')
+      .with.property('code', 9002)
   })
 
-  it('Check CIDR without invalid mask ipv6 - fail', function(done) {
-    let test = acip.checkCIDR({ cidr: [{ cidr: '2001:4d20::/323', type: 'ipv6' }] })
-    expect(test.code).equal(9007)
-    expect(test.message).equal("acip_checkCIDR_maskInvalid")
-    return done()
+  it('Check if IP is in CIDR - invalid IP', () => {
+    expect(() => acip.checkCIDR({ ip: '760.0.0.0', cidr: test2 }))
+      .to.throw(Error, 'acip_checkCIDR_invalidIP')
+      .with.property('code', 9007)
   })
 
-  it('Check CIDR with invalid cidr - fail', function(done) {
-    let test = acip.checkCIDR({ cidr: [{ cidr: '85.182.224.128333/8' }] })
-    expect(test.code).equal(9006)
-    expect(test.message).equal("acip_checkCIDR_invalid")
-    return done()
+  it('Check if IPv6 is in CIDRv6', () => {
+    const test = acip.checkCIDR({ ip: '2001:0db8:85a3:0000:0000:8a2e:0370:7334', cidr: [{ cidr: '2001:0db8:85a3::/64' }] })
+    expect(test).to.be.true
   })
 
-  /* IP package has possible bug: https://github.com/indutny/node-ip/issues/59
-  it('Check CIDR with invalid cidr ipv6 - fail', function(done) {
-    let test = acip.checkCIDR({ cidr: [{ cidr: 'a356/64', type: 'ipv6' }] })
-    expect(test.code).equal(9006)
-    expect(test.message).equal("acip_checkCIDR_invalid")
-    return done()
+  it('Check if IPv4 is in CIDRv6 - should fail', () => {
+     expect(() => acip.checkCIDR({ ip: '1.2.3.4', cidr: [{ cidr: '2001:0db8:85a3::/64' }] }))
+    .to.throw(Error, 'acip_checkCIDR_ipNotInCIDRrange')
+    .with.property('code', 9002)
   })
-  */
+  
+  it('Check CIDR without parameter CIDR - fail', () => {
+    expect(() => acip.checkCIDR({ ip: test1 }))
+      .to.throw(Error, 'acip_checkCIDR_listIsEmpty')
+      .with.property('code', 9001)
+  })
 
-  it('Return IP block from CIDR', function(done) {
-    let result = acip.ipsFromCIDR({ cidr: '8.8.8.8/31' })
+  it('Check CIDR without invalid mask - fail', () => {
+    expect(() => acip.checkCIDR({ cidr: [{ cidr: '85.182.224.128/333' }] }))
+      .to.throw(Error, 'acip_checkCIDR_invalid')
+      .with.property('code', 9006)
+  })
+
+  it('Check CIDR without invalid mask ipv6 - fail', () => {
+    expect(() => acip.checkCIDR({ cidr: [{ cidr: '2001:4d20::/323', type: 'ipv6' }] }))
+      .to.throw(Error, 'acip_checkCIDR_invalid')
+      .with.property('code', 9006)
+  })
+
+  it('Check CIDR with invalid cidr - fail', () => {
+    expect(() => acip.checkCIDR({ cidr: [{ cidr: '85.182.224.128333/8' }] }))
+      .to.throw(Error, 'acip_checkCIDR_invalid')
+      .with.property('code', 9006)
+  })
+  
+  it('Return IP block from CIDR', function() {
+    const result = acip.ipsFromCIDR({ cidr: '8.8.8.8/31' })
     expect(result).eql(["8.8.8.8", "8.8.8.9"])
-    return done()
+  })
+
+  it('Return IPv4 block from CIDR with high prefix', function() {
+    const result = acip.ipsFromCIDR({ cidr: '8.8.8.8/16' })
+    expect(result).to.have.lengthOf(256)
+  })
+
+  it('Return IPv6 block from CIDR with high prefix', function() {
+    const result = acip.ipsFromCIDR({ cidr: '2001:4d20::/64' })
+    expect(result).to.have.lengthOf(65536)
   })
 })
 
 describe('IPs to privacy', () => {
   const ips = ['8.8.8.8', '4.4.4.4']
 
-  it('Check that IPs are masked properly', (done) => {
-    let test = acip.ipsToPrivacy(ips)
+  it('Check that IPs are masked properly', () => {
+    const test = acip.ipsToPrivacy(ips)
     expect(test).eql(['8.8.x.x', '4.4.x.x'])
-    return done()
   })
 })
 
-describe('IP in IP list', () => {
-  const ip = '4.4.x.x'
-  const ipFail = '1.1.x.x'
-  const ips = ['8.8.x.x', '4.4.x.x']
-
-  it('Check that IP is in list', (done) => {
-    let test = acip.ipInIPList({ ips, ip })
-    expect(test).equal(true)
-    return done()
-  })
-
-  it('Check that IP is not in list', (done) => {
-    let test = acip.ipInIPList({ ips, ipFail })
-    expect(test).equal(false)
-    return done()
-  })
-})
 
 describe('Is IP private', () => {
   const privateIPv4 = '127.0.0.1'
-  const privateIPv6 = '::ffff:172.31.7.78'
+  const privateIPv6 = 'fd12:3456:789a:1::1'
   const publicIPv4 = '8.8.8.8'
   const publicIPv6 = '2001:4860:4860::8888'
 
-  it('Check private IPv4 address', done => {
-    let test = acip.isPrivate(privateIPv4)
+  it('Check private IPv4 address', () =>  {
+    const test = acip.isPrivate(privateIPv4)
     expect(test).equal(true)
-    return done()
   })
 
-  it('Check private IPv6 address', done => {
-    let test = acip.isPrivate(privateIPv6)
+  it('Check private IPv6 address', () =>  {
+    const test = acip.isPrivateIP(privateIPv6)
     expect(test).equal(true)
-    return done()
   })
 
-  it('Check public IPv4 address', done => {
-    let test = acip.isPrivate(publicIPv4)
+  it('Check public IPv4 address', () =>  {
+    const test = acip.isPrivateIP(publicIPv4)
     expect(test).equal(false)
-    return done()
   })
 
-  it('Check public IPv6 address', done => {
-    let test = acip.isPrivate(publicIPv6)
+  it('Check public IPv6 address', () =>  {
+    const test = acip.isPrivateIP(publicIPv6)
     expect(test).equal(false)
-    return done()
   })
 
 })
 
 describe('Use reverse approach for X-Forwarded-For', () => {
-  it('Set Environemt', done => {
+  it('Set Environemt', () =>  {
     _.set(process, 'env.X-Forwarded-For', 'reverse')
-    return done()
   })
 
-  it('Test IP', done => {
-    let req = { 
+  it('Test IP', () =>  {
+    const req = { 
       headers: {
         'x-forwarded-for': '1.1.1.1, 4.4.4.4, 1.2.3.4'
       }
     }
-    let test = acip.determineIP(req)
+    const test = acip.determineIP(req)
     expect(test).equal('1.2.3.4')
-    return done()  
   })
 
-  it('Test IP behind ALB', done => {
-    let req = { 
+  it('Test IP behind ALB', () =>  {
+    const req = { 
       headers: {
         'x-forwarded-for': '1.1.1.1, 4.4.4.4, 1.2.3.4, 172.30.1.104'
       }
     }
-    let test = acip.determineIP(req)
+    const test = acip.determineIP(req)
     expect(test).equal('1.2.3.4')
-    return done()  
   })
 
-  it('Test IP with real-ip set', done => {
-    let req = { 
+  it('Test IP with real-ip set', () =>  {
+    const req = { 
       headers: {
         'x-real-ip': '1.1.1.1',
         'x-forwarded-for': '1.1.1.1, 1.2.3.4, 172.30.1.104'
       }
     }
-    let test = acip.determineIP(req)
+    const test = acip.determineIP(req)
     expect(test).equal('1.2.3.4')
-    return done()  
   })
 })
 
 describe('Anonymize IP', () => {
-  it('Anonymize IPv4', done => {
-    let test = acip.anonymizeIP('1.2.1.1')
+  it('Anonymize IPv4', () =>  {
+    const test = acip.anonymizeIP('1.2.1.1')
     expect(test).equal('1.2.x.x')
-    done()
   })
 
-  it('Anonymize IPv4 with 0 as replacment', done => {
-    let test = acip.anonymizeIP('1.2.1.1', { replacement: 0 })
+  it('Anonymize IPv4 with 0 as replacment', () =>  {
+    const test = acip.anonymizeIP('1.2.1.1', { replacement: 0 })
     expect(test).equal('1.2.0.0')
-    done()
   })
 
-  it('Anonymize IPv6', done => {
-    let test = acip.anonymizeIP('2001:4860:4860::8888')
-    expect(test).equal('2001:4860:4860:x:x')
-    done()
+  it('Anonymize IPv6', () =>  {
+    const test = acip.anonymizeIP('2001:4860:4860::8888')
+    expect(test).equal('2001:4860:4860:0:x:x:x:x')
   })
 
-  it('Anonymize non-IP', done => {
-    let test = acip.anonymizeIP('I am no IP')
+  it('Anonymize non-IP', () =>  {
+    const test = acip.anonymizeIP('I am no IP')
     expect(test).to.be.undefined
-    done()
   })
 })

@@ -3,23 +3,24 @@
   "version": "3.1.1",
   "author": "Mark Poepping (https://www.admiralcloud.de)",
   "engines": {
-    "node": ">=0.16"
+    "node": ">=0.18"
   },
   "dependencies": {
-    "ip": "^2.0.1",
+    "ac-custom-error": "^1.0.0",
+    "ip-address": "^9.0.5",
     "lodash": "4.x"
   },
   "repository": "https://github.com/admiralcloud/ac-ip",
   "license": "MIT",
   "devDependencies": {
     "ac-semantic-release": "^0.4.2",
-    "c8": "^9.1.0",
+    "c8": "^10.1.2",
     "chai": "^4.4.1",
-    "eslint": "^8.57.0",
-    "mocha": "^10.3.0"
+    "eslint": "^9.6.0",
+    "mocha": "^10.6.0"
   },
   "scripts": {
-    "test": "mocha --reporter spec",
+    "test": "mocha --reporter spec --bail",
     "coverage": "./node_modules/c8/bin/c8.js yarn test"
   }
 }

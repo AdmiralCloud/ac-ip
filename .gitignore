@@ -37,3 +37,4 @@ report.xml
 .jenkins.conf
 **.ac-credentials**
 **.pem
+debug.js
