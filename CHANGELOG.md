@@ -1,3 +1,18 @@
+<a name="4.1.1"></a>
+
+## [4.1.1](https://github.com/mmpro/ac-ip/compare/v4.1.0..v4.1.1) (2024-07-06 19:10:34)
+
+
+### Bug Fix
+
+* **App:** Use isSpecialIp in determineIP | MP | [4fd437cfa032fa2e6aa4eb1fddcfd62acef06d9c](https://github.com/mmpro/ac-ip/commit/4fd437cfa032fa2e6aa4eb1fddcfd62acef06d9c)    
+Replaced isPrivateIP with isSpecialIP  
+Related issues: [undefined/undefined#master](undefined/browse/master)
+### Documentation
+
+* **App:** Added documentation for isSpecialIP | MP | [2fddaf7469454eb0ca3aa57ecdcb40d99c6edfbb](https://github.com/mmpro/ac-ip/commit/2fddaf7469454eb0ca3aa57ecdcb40d99c6edfbb)    
+Added documentation for isSpecialIP  
+Related issues: [undefined/undefined#master](undefined/browse/master)
 <a name="4.1.0"></a>
  
 # [4.1.0](https://github.com/mmpro/ac-ip/compare/v4.0.0..v4.1.0) (2024-07-06 18:43:59)
