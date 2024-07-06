@@ -90,7 +90,7 @@ const anonymizedIP = acts.anonymizeIP('1.2.3.4', { replacement: 0 }) -> 1.2.0.0
 ```
 
 ### isPrivateIP
-Checks is a function is a private IP.
+Checks is a function is a private IP. Please checkout isSpecialIP function - it is more generic.
 
 ```
 const isPrivate = acts.isPrivate('1.2.3.4')
@@ -101,6 +101,14 @@ const isPrivate = acts.isPrivate('127.0.0.1')
 ```
 
 *Breaking change:* Function is now isPrivateIP insteand of isPrivate.
+
+### isSpecialIP
+Check if given IP is a special IP (e.g. private, loopback, link-local, etc)
+
+```
+const isSpecial = acts.isSpecial('127.0.0.1') // true
+const isSpecial = acts.isSpecial('8.8.8.8') // false
+```
 
 # Deprecated functions
 Function *ipInIPList* no longer exists. Use checkCIDR instead.
