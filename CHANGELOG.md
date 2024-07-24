@@ -1,3 +1,18 @@
+<a name="4.1.2"></a>
+
+## [4.1.2](https://github.com/mmpro/ac-ip/compare/v4.1.1..v4.1.2) (2024-07-24 09:12:53)
+
+
+### Bug Fix
+
+* **App:** Set maxPrefix to 18 for IPv4 CIDR | MP | [f6d3f87bad1ceb802e37d60d25762c07dd5d2dc8](https://github.com/mmpro/ac-ip/commit/f6d3f87bad1ceb802e37d60d25762c07dd5d2dc8)    
+Make current version more backwards compatible by using 18 instead of 24 as maxPrefix for CIDR.  
+Related issues: [undefined/undefined#master](undefined/browse/master)
+### Chores
+
+* **App:** Updated packages | MP | [0ebefd754d5dd69234d76d4ad2e56fe1c506b59a](https://github.com/mmpro/ac-ip/commit/0ebefd754d5dd69234d76d4ad2e56fe1c506b59a)    
+Updated packages  
+Related issues: [undefined/undefined#master](undefined/browse/master)
 <a name="4.1.1"></a>
 
 ## [4.1.1](https://github.com/mmpro/ac-ip/compare/v4.1.0..v4.1.1) (2024-07-06 19:10:34)
