@@ -59,7 +59,7 @@ const acip = function () {
    * ipsFromCIDR({ cidr: '8.8.8.8/31' })
    * Returns ['8.8.8.8', '8.8.8.9']
    */
-  function ipsFromCIDR({ cidr, maxPrefix = { v4: 24, v6: 112 } }) {
+  function ipsFromCIDR({ cidr, maxPrefix = { v4: 18, v6: 112 } }) {
     let address = prepIP({ ip: cidr })
     let maxAddresses
 
