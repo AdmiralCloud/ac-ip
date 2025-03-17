@@ -83,13 +83,13 @@ const acip = function () {
     const endAddress = address.endAddress()
 
     const ipArray = []
-    let currentIPBigInt = BigInt(startAddress.bigInteger())
+    let currentIPBigInt = BigInt(startAddress.bigInt())
 
-    const endIPBigInt = BigInt(endAddress.bigInteger())
+    const endIPBigInt = BigInt(endAddress.bigInt())
     const maxIPsToGenerate = 1000000n // Begrenzung auf 1 Million IPs
 
     for (let i = 0n; i < maxAddresses && i < maxIPsToGenerate && currentIPBigInt <= endIPBigInt; i++) {
-      const currentIP = address.v4 === false ? Address6.fromBigInteger(currentIPBigInt) : Address4.fromBigInteger(currentIPBigInt)
+      const currentIP = address.v4 === false ? Address6.fromBigInt(currentIPBigInt) : Address4.fromBigInt(currentIPBigInt)
       ipArray.push(currentIP.address)
       currentIPBigInt++
     }

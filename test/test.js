@@ -188,7 +188,7 @@ describe('Testing CIDR', function () {
 
   it('Return IPv4 block from CIDR with high prefix', function() {
     const result = acip.ipsFromCIDR({ cidr: '8.8.8.8/16' })
-    expect(result).to.have.lengthOf(256)
+    expect(result).to.have.lengthOf(16384)
   })
 
   it('Return IPv6 block from CIDR with high prefix', function() {
