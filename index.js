@@ -26,8 +26,8 @@ const acip = function () {
   const determineIP = (req) => {
     let ip = _.get(req, 'headers.x-forwarded-for') || _.get(req, 'ip')
     // allow "overwriting" IP for local testing, but not in production, send X-AdmiralCloud-Header "true"
-    if (_.has(req, 'query.ip') && _.indexOf(['development', 'test'], _.get(process, 'env.NODE_ENV', 'development')) > -1) {
-      ip = _.get(req, 'query.ip')
+    if (req?.query?.ip && _.indexOf(['development', 'test'], _.get(process, 'env.NODE_ENV', 'development')) > -1) {
+      ip = req?.query?.ip
     }
 
     // LEGACY - REMOVE 2019-06-30
