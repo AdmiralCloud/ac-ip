@@ -298,10 +298,10 @@
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.15.tgz#596a1747233694d50f6ad8a7869fcb6f56cf5841"
   integrity sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==
 
-ac-custom-error@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/ac-custom-error/-/ac-custom-error-1.0.5.tgz#f61b8f0a5e71f364d46ea041113d5d530df5ef5c"
-  integrity sha512-g4klFNE8QxU/wXmeGO8Z+hF/WoBirAnLSc/EVNNC2skKNL6uFkr1cGBF16c0f+b9rIpeLGnhxwhW2jyvCspSng==
+ac-custom-error@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/ac-custom-error/-/ac-custom-error-1.0.6.tgz#59ee303eaa605789009596d5403db5fdcb3cb7ff"
+  integrity sha512-ltxc5X4uQ42OQfJ0ilCOhTaD+SjblTKWoZHw7rApMJsaze1sralbG5Q+6BgEp8dxwWsSfSj2/eA1Ijfe4UjEKQ==
 
 ac-semantic-release@^0.4.10:
   version "0.4.10"
