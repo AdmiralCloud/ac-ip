@@ -31,9 +31,9 @@ const acip = function () {
     }
 
     // LEGACY - REMOVE 2019-06-30
-    if (req?.debugMode && _.has(req, 'query.ip')) ip = _.get(req, 'query.ip')
+    if (req?.debugMode && _.has(req, 'query.ip')) { ip = _.get(req, 'query.ip') }
 
-    if (!ip) throw new ACError('acip_determineIP_noIPDetected', 9000)
+    if (!ip) { throw new ACError('acip_determineIP_noIPDetected', 9000) }
     // x forwarded for can be a comma or space separated list - z.b. 192.168.24.73, 198.135.124.15
     // X-Forwarded-For: client1, proxy1, proxy2 -> but client1 can be a private IP address
     // AWS (ALB) adds the real client ip to the right of forwarded-for list, therefore take the first non-private IP from the right 
@@ -116,9 +116,9 @@ const acip = function () {
     }
     // check that every cidr in array is a cidr (address/prefix)
     const check = _.every(cidr, item => {
-      if (!item?.cidr) return false
+      if (!item?.cidr) { return false }
       const [ address, prefix ] = _.split(item.cidr, '/')
-      if (!address || !prefix) return false
+      if (!address || !prefix) { return false }
       return true
     })
     if (!check) {
@@ -136,7 +136,7 @@ const acip = function () {
           return false
         }
       })
-      if (check) return true
+      if (check) { return true }
       throw new ACError('acip_checkCIDR_invalid', 9006)
     }
 
@@ -157,12 +157,12 @@ const acip = function () {
       })
   
 
-      if (match) return match
-      if (noMatchAllowed) return null
+      if (match) { return match }
+      if (noMatchAllowed) { return null }
       throw new ACError('acip_checkCIDR_ipNotInCIDRrange', 9002, { ip })
     }
     catch (e) {
-      if (e instanceof ACError) throw e
+      if (e instanceof ACError) { throw e }
       throw new ACError('acip_checkCIDR_invalidIP', 9007)
     }
   }
