@@ -1,4 +1,13 @@
 
+## [4.1.10](https://github.com/mmpro/ac-ip/compare/v4.1.9..v4.1.10) (2026-02-24 18:47:39)
+
+
+### Bug Fix
+
+* **Misc:** Package updates | MP | [98b1a87717f080d00bebeb065c1c0750414d53c5](https://github.com/mmpro/ac-ip/commit/98b1a87717f080d00bebeb065c1c0750414d53c5)    
+Package updates incl ESLint 9 -> 10 and lint fixes  
+Related issues:
+
 ## [4.1.9](https://github.com/mmpro/ac-ip/compare/v4.1.8..v4.1.9) (2026-02-03 08:06:36)
 
 
