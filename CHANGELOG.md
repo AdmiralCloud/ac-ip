@@ -1,4 +1,13 @@
 
+## [4.1.12](https://github.com/mmpro/ac-ip/compare/v4.1.11..v4.1.12) (2026-03-21 11:01:40)
+
+
+### Bug Fix
+
+* **Misc:** Package updates | MP | [c7589e954b101f0b5a5996143462e0b296a9fa62](https://github.com/mmpro/ac-ip/commit/c7589e954b101f0b5a5996143462e0b296a9fa62)    
+Package updates  
+Related issues:
+
 ## [4.1.11](https://github.com/mmpro/ac-ip/compare/v4.1.10..v4.1.11) (2026-02-28 12:04:44)
 
 
