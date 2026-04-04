@@ -1,3 +1,23 @@
+# [5.0.0](https://github.com/mmpro/ac-ip/compare/v4.1.12..v5.0.0) (2026-04-04 10:34:27)
+
+
+### Bug Fix
+
+
+* **App:** Package updates | MP | [095cca5c0b4a4d3adba29bbb23688b8054f07bf8](https://github.com/mmpro/ac-ip/commit/095cca5c0b4a4d3adba29bbb23688b8054f07bf8)    
+Package updates  
+Related issues:
+* **App:** Package updates | MP | [40c560e61ee5505551cd0b7443150ade7f794a29](https://github.com/mmpro/ac-ip/commit/40c560e61ee5505551cd0b7443150ade7f794a29)    
+Package updates  
+Related issues:
+### Chores
+
+
+* **App:** Fixed workflow | MP | [4920cd16cafbc9d8d1c01457cfc7785e775973ee](https://github.com/mmpro/ac-ip/commit/4920cd16cafbc9d8d1c01457cfc7785e775973ee)    
+Fixed workflow permission  
+Related issues:
+## BREAKING CHANGES
+* **App:** Requires Node 22+
 
 ## [4.1.12](https://github.com/mmpro/ac-ip/compare/v4.1.11..v4.1.12) (2026-03-21 11:01:40)
 
