@@ -3,7 +3,7 @@
   "version": "4.1.12",
   "author": "Mark Poepping (https://www.admiralcloud.de)",
   "engines": {
-    "node": ">=0.18"
+    "node": ">=22.0.0"
   },
   "dependencies": {
     "ac-custom-error": "^2.0.3",
