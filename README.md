@@ -1,7 +1,7 @@
 # AC IP
 This is a little helper for IP and network operations.
 
-[![Node.js CI](https://github.com/AdmiralCloud/ac-ip/actions/workflows/node.js.yml/badge.svg)](https://github.com/AdmiralCloud/ac-ip/actions/workflows/node.js.yml)
+[![Node.js CI](https://github.com/AdmiralCloud/ac-ip/actions/workflows/node.js.yml/badge.svg)](https://github.com/AdmiralCloud/ac-ip/actions/workflows/node.js.yml) [![CodeQL](https://github.com/AdmiralCloud/ac-ip/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/AdmiralCloud/ac-ip/actions/workflows/github-code-scanning/codeql)
 
 # BREAKING CHANGE Version 4
 + package ip is no longer maintained, therefore we now use ip-address instead

@@ -6,17 +6,17 @@
     "node": ">=0.18"
   },
   "dependencies": {
-    "ac-custom-error": "^2.0.2",
+    "ac-custom-error": "^2.0.3",
     "ip-address": "^10.1.0",
     "lodash": "4.x"
   },
   "repository": "https://github.com/admiralcloud/ac-ip",
   "license": "MIT",
   "devDependencies": {
-    "ac-semantic-release": "^0.4.10",
+    "ac-semantic-release": "^1.0.1",
     "c8": "^11.0.0",
     "chai": "^4.5.0",
-    "eslint": "^10.1.0",
+    "eslint": "^10.2.0",
     "globals": "^17.4.0",
     "mocha": "^11.7.5"
   },
