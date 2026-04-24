@@ -6,7 +6,7 @@
     "node": ">=22.0.0"
   },
   "dependencies": {
-    "ac-custom-error": "^2.0.3",
+    "ac-custom-error": "^2.0.5",
     "ip-address": "^10.1.0",
     "lodash": "4.x"
   },
@@ -16,7 +16,7 @@
     "ac-semantic-release": "^1.0.2",
     "c8": "^11.0.0",
     "chai": "^4.5.0",
-    "eslint": "^10.2.0",
+    "eslint": "^10.2.1",
     "globals": "^17.5.0",
     "mocha": "^11.7.5"
   },
