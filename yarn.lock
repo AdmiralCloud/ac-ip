@@ -754,10 +754,10 @@ inquirer@^12.11.1:
     run-async "^4.0.6"
     rxjs "^7.8.2"
 
-ip-address@^10.1.0:
-  version "10.1.0"
-  resolved "https://registry.yarnpkg.com/ip-address/-/ip-address-10.1.0.tgz#d8dcffb34d0e02eb241427444a6e23f5b0595aa4"
-  integrity sha512-XXADHxXmvT9+CRxhXg56LJovE+bmWnEWB78LB83VZTprKTmaC5QfruXocxzTZ2Kl0DNwKuBdlIhjL8LeY8Sf8Q==
+ip-address@^10.1.1:
+  version "10.1.1"
+  resolved "https://registry.yarnpkg.com/ip-address/-/ip-address-10.1.1.tgz#a7614252413e3751b841aaffba939090d2c4c37b"
+  integrity sha512-1FMu8/N15Ck1BL551Jf42NYIoin2unWjLQ2Fze/DXryJRl5twqtwNHlO39qERGbIOcKYWHdgRryhOC+NG4eaLw==
 
 is-extglob@^2.1.1:
   version "2.1.1"
