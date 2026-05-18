@@ -1,3 +1,11 @@
+## [5.0.4](https://github.com/mmpro/ac-ip/compare/v5.0.3..v5.0.4) (2026-05-18 19:26:01)
+
+
+### Bug Fix
+
+
+* **App:** Package updates | MP | [ef7f3b6d5c3e457934080c854a847f5376aedf3d](https://github.com/mmpro/ac-ip/commit/ef7f3b6d5c3e457934080c854a847f5376aedf3d)    
+Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
 ## [5.0.3](https://github.com/mmpro/ac-ip/compare/v5.0.2..v5.0.3) (2026-05-08 13:59:48)
 
 
