@@ -6,7 +6,7 @@
     "node": ">=22.0.0"
   },
   "dependencies": {
-    "ac-custom-error": "^2.0.5",
+    "ac-custom-error": "^2.0.6",
     "ip-address": "^10.2.0",
     "lodash": "4.x"
   },
@@ -18,7 +18,7 @@
     "chai": "^4.5.0",
     "eslint": "^10.4.0",
     "globals": "^17.6.0",
-    "mocha": "^11.7.5"
+    "mocha": "^11.7.6"
   },
   "scripts": {
     "test": "mocha --reporter spec --bail",
