@@ -341,7 +341,7 @@ describe('Special IP', () => {
   })
 
   it('Check invalid IP address', () =>  {
-    expect(() => acip.isSpecialIP('thisIsNoIpAddress'))
+    expect(() => acip.isSpecialIP('notAnIpv4'))
       .to.throw(Error, 'Invalid IPv4 address')
   })
 })
