@@ -1,3 +1,12 @@
+## [5.0.10](https://github.com/mmpro/ac-ip/compare/v5.0.9..v5.0.10) (2026-11-08 12:28:07)
+
+
+### Chores
+
+
+* **App:** Updated packages | MP | [90d5276158bee64963be8b3cd722e8224ba577a8](https://github.com/mmpro/ac-ip/commit/90d5276158bee64963be8b3cd722e8224ba577a8)    
+Use a shorter invalid input in the isSpecialIP test, as newer ip-address versions throw a different error for strings longer than 15 characters.  
+Related issues:
 ## [5.0.9](https://github.com/mmpro/ac-ip/compare/v5.0.8..v5.0.9) (2026-08-23 11:04:09)
 
 
